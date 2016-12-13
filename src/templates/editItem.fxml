@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="14.0" maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="368.0" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+  <children>
+    <VBox maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" prefHeight="293.0" prefWidth="351.0" spacing="7.0" GridPane.columnIndex="2">
+      <children>
+        <Label fx:id="messageLabel" text="Edit Item" textAlignment="LEFT" wrapText="true">
+          <font>
+            <Font name="System Bold" size="13.0" />
+          </font>
+        </Label>
+        <Label fx:id="detailsLabel" text="Enter Barcode, click Search, then edit details: " textAlignment="LEFT" wrapText="true">
+          <font>
+            <Font size="12.0" />
+          </font>
+        </Label>
+            <Pane prefHeight="182.0" prefWidth="321.0">
+               <children>
+                  <TextField fx:id="editName" layoutX="72.0" layoutY="45.0" prefHeight="27.0" prefWidth="167.0" promptText="Ex. Multi For Men" />
+                  <TextField fx:id="editVendor" layoutX="72.0" layoutY="78.0" promptText="Ex. Megafood" />
+                  <TextField fx:id="editPrice" layoutX="72.0" layoutY="110.0" promptText="Ex: 5.99" />
+                  <TextField fx:id="editCountAdd" layoutX="72.0" layoutY="141.0" promptText="Ex: 5 " />
+                  <TextField fx:id="editSearchBarcode" layoutX="72.0" layoutY="14.0" onAction="#getEditItemBarcode" promptText="Ex. 987654321" />
+                  <Label layoutX="9.0" layoutY="50.0" prefHeight="17.0" prefWidth="44.0" text="Name" />
+                  <Label layoutX="9.0" layoutY="83.0" text="Vendor" />
+                  <Label layoutX="8.0" layoutY="115.0" prefHeight="17.0" prefWidth="38.0" text="Price" />
+                  <Label layoutX="9.0" layoutY="146.0" prefHeight="17.0" prefWidth="44.0" text="Count" />
+                  <Label layoutX="9.0" layoutY="19.0" prefHeight="17.0" prefWidth="59.0" text="Barcode" />
+                  <Button layoutX="247.0" layoutY="14.0" mnemonicParsing="false" onAction="#getEditItemBarcode" text="Search" />
+               </children>
+            </Pane>
+          <HBox maxHeight="-Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="253.0">
+            <children>
+              <HBox fx:id="actionParent" alignment="CENTER">
+                <HBox.margin>
+                  <Insets />
+                </HBox.margin>
+              </HBox>
+                  <Region prefHeight="27.0" prefWidth="66.0" />
+              <Button fx:id="addCancelB" cancelButton="true" minWidth="80.0" mnemonicParsing="false" onAction="#editItem" text="Cancel" HBox.hgrow="NEVER">
+                <HBox.margin>
+                  <Insets />
+                </HBox.margin>
+              </Button>
+              <HBox fx:id="okParent" alignment="CENTER" />
+            <Button fx:id="editSave" minWidth="80.0" mnemonicParsing="false" onAction="#editItemSave" text="Save" HBox.hgrow="NEVER">
+              <HBox.margin>
+                <Insets left="14.0" />
+              </HBox.margin>
+            </Button>
+            </children>
+          </HBox>
+      </children>
+    </VBox>
+      <Label />
+      <VBox prefHeight="293.0" prefWidth="0.0" GridPane.columnIndex="1" />
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="NEVER" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
+      <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="Infinity" minWidth="-Infinity" />
+  </columnConstraints>
+  <padding>
+    <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+  </padding>
+  <rowConstraints>
+    <RowConstraints maxHeight="Infinity" minHeight="-Infinity" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
+  </rowConstraints>
+</GridPane>

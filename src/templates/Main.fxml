@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="main" prefHeight="405.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openUserProfile" text="Open Profile" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveUserProfile" text="Save Profile" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <Menu mnemonicParsing="false" text="Current User Information">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#checkEmployeeLoggedIn" text="Who's Logged In?" />
+                      <MenuItem mnemonicParsing="false" onAction="#clearDefaultEmployee" text="Clear Default Employee" />
+                    </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#loginDisplay" text="Login" />
+                  <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+              <MenuItem mnemonicParsing="false" onAction="#closeMain" text="Close" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Item">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#addItem" text="Add" />
+                  <MenuItem mnemonicParsing="false" onAction="#editItemDialog" text="Update" />
+                  <MenuItem mnemonicParsing="false" onAction="#openDeleteDialog" text="Delete" />
+                  <MenuItem mnemonicParsing="false" text="Search" />
+                  <MenuItem mnemonicParsing="false" onAction="#resetCountDialog" text="Reset Inventory Count" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="User">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#registerDialog" text="Create User" />
+                <MenuItem mnemonicParsing="false" onAction="#deleteUserDialog" text="Delete User" />
+                  <MenuItem mnemonicParsing="false" text="Change User Information" />
+                  <MenuItem mnemonicParsing="false" onAction="#empTableDialog" text="Display Users" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Import">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#importData" text="Open Excel File" />
+                  <MenuItem mnemonicParsing="false" onAction="#openDatabaseBackup" text="Open Backup Database File" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Export">
+              <items>
+                  <Menu mnemonicParsing="false" text="Export to Excel">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#openVendorExportDialog" text="Export Data by Vendor" />
+                      <MenuItem mnemonicParsing="false" onAction="#exportAll" text="Export All Data To Excel" />
+                    </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#saveDatabaseBackup" text="Save Database Backup" />
+                  <Menu mnemonicParsing="false" text="Barcodes Not Found">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#exportNotFound" text="Export Barcodes Not Found" />
+                      <MenuItem mnemonicParsing="false" onAction="#clearBarcodes" text="Clear Barcodes Not Found" />
+                    </items>
+                  </Menu>
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Database">
+              <items>
+                  <Menu mnemonicParsing="false" text="Create Database">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#serverToDb" text="Inventory" />
+                      <MenuItem mnemonicParsing="false" onAction="#createEmployeeDatabase" text="Employee" />
+                    </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#showConnectDialog" text="Set IP Address" />
+                  <MenuItem mnemonicParsing="false" onAction="#openEditCredentialDialog" text="Set Default Server Credentials" />
+                  <MenuItem mnemonicParsing="false" onAction="#serverStatusDialog" text="Check Server Status" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <BorderPane prefHeight="380.0" prefWidth="603.0">
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+         <top>
+            <HBox prefHeight="39.0" prefWidth="466.0" BorderPane.alignment="CENTER">
+               <children>
+                  <RadioButton fx:id="add" mnemonicParsing="false" onAction="#addCall" prefHeight="18.0" prefWidth="49.0" text="Add">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="sub" mnemonicParsing="false" onAction="#subCall" text="Subtract">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="set" mnemonicParsing="false" onAction="#setCall" prefHeight="18.0" prefWidth="89.0" text="Set Count">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <Region prefHeight="39.0" prefWidth="274.0" HBox.hgrow="ALWAYS" />
+                  <ProgressIndicator fx:id="ind" prefHeight="39.0" prefWidth="53.0" progress="0.0" />
+               </children>
+            </HBox>
+         </top>
+         <left>
+            <TextField fx:id="barcodeField" onAction="#addSubSet" prefHeight="27.0" prefWidth="175.0" promptText="Enter Barcode:" BorderPane.alignment="CENTER" />
+         </left>
+         <bottom>
+            <VBox prefHeight="282.0" prefWidth="603.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="299.0" prefWidth="587.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label />
+                        <Label fx:id="displayCount" alignment="CENTER" prefHeight="272.0" prefWidth="175.0" style="-fx-border-color: grey; -fx-background-color: white;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust />
+                           </effect>
+                        </Label>
+                        <TableView fx:id="entryTableView" prefHeight="225.0" prefWidth="430.0" HBox.hgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="barcodeCol" prefWidth="75.0" text="Barcode" />
+                            <TableColumn fx:id="countCol" prefWidth="55.0" text="Count" />
+                              <TableColumn fx:id="nameCol" prefWidth="137.0" text="Name" />
+                              <TableColumn fx:id="vendorCol" prefWidth="92.0" text="Vendor" />
+                              <TableColumn fx:id="priceCol" prefWidth="69.0" text="Price" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </HBox>
+                  <Label fx:id="alertLabelPane" prefHeight="19.0" prefWidth="607.0" style="-fx-border-color: grey;" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</VBox>

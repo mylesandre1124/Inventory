@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Inventory:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Inventory_jar</output-path>
+    <root id="archive" name="Inventory.jar">
+      <element id="module-output" name="Inventory" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Drivers/javax.mail.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Drivers/poi-3.15-beta1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Drivers/poi-ooxml-3.15-beta1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Drivers/jar_files/stax-api-1.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Drivers/jar_files/xmlbeans-2.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Drivers/jar_files/poi-ooxml-schemas-3.15-beta1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Drivers/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
