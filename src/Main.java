@@ -32,7 +32,7 @@ public class Main extends Application {
         }
         catch (NullPointerException ex)
         {
-
+            
         }
         primaryStage.setTitle("Inventory Counter");
         Scene scene = new Scene(root, 600, 400);
