@@ -20,17 +20,20 @@ public class Main extends Application {
         Thread.setDefaultUncaughtExceptionHandler(dex);
         Os os = new Os();
         Parent root = null;
-        if(os.isMac()) {
-            root = FXMLLoader.load(getClass().getResource(FileSeparator.statSeparate("templates/Main.fxml")));
+        try {
+            if (os.isMac()) {
+                root = FXMLLoader.load(getClass().getResource(FileSeparator.statSeparate("templates/Main.fxml")));
+            } else if (os.isWindows()) {
+                Print.print("Ran");
+                File file = new File("C:\\Users\\Myles Andre\\Google Drive\\Programming\\Projects\\Desktop Invetory\\Inventory (1)\\src\\Main.fxml");
+                Print.print(file.exists() + "", file.getAbsolutePath());
+                root = FXMLLoader.load(getClass().getResource(file.getAbsolutePath()));
+            }
         }
-        else if(os.isWindows())
+        catch (NullPointerException ex)
         {
-            Print.print("Ran");
-            File file = new File("C:\\Users\\Myles Andre\\Google Drive\\Programming\\Projects\\Desktop Invetory\\Inventory (1)\\src\\Main.fxml");
-            Print.print(file.exists() + "", file.getAbsolutePath());            
-            root = FXMLLoader.load(getClass().getResource(file.getAbsolutePath()));
-        }
 
+        }
         primaryStage.setTitle("Inventory Counter");
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);

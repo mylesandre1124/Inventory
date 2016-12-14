@@ -664,7 +664,6 @@ public class Controller {
         }
     }
 
-    @FXML
     public void addSubSet() throws IOException, SQLException, ClassNotFoundException {
         int state = this.state;
         if (state == 1) {
