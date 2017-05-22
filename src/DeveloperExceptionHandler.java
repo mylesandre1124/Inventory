@@ -1,11 +1,17 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.io.*;
-
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Properties;
 
 /**
  * Created by Myles on 6/24/16.
