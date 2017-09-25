@@ -450,12 +450,12 @@ public class Controller {
 
 
 
-    public void add1() throws SQLException, ClassNotFoundException, IOException {
+    public void incrementStock() throws SQLException, ClassNotFoundException, IOException {
         checkLoggedIn();
         checkEmpLoggedIn();
         Database db = new Database(stmt, connection);
         int barcode = returnBarcode();
-        if(testBarcode(barcode)){
+        if(checkIfBarcodeExistsInDB(barcode)){
             Count count = new Count(employee);
             Controller.empId = count.getCountDb(db, barcode);
             Controller.count = count.getCount();
@@ -468,19 +468,19 @@ public class Controller {
             }
             System.out.println(count.getCount());
         }
-        else if(!testBarcode(barcode))
+        else if(!checkIfBarcodeExistsInDB(barcode))
         {
             alertLabelPane.setText("Barcode: " + barcode + " not found.");
         }
         populateTable(barcode);
     }
 
-    public void sub1() throws SQLException, ClassNotFoundException, IOException {
+    public void decrementStock() throws SQLException, ClassNotFoundException, IOException {
         checkLoggedIn();
         checkEmpLoggedIn();
         Database db = new Database(stmt, connection);
         int barcode = returnBarcode();
-        if(testBarcode(barcode)) {
+        if(checkIfBarcodeExistsInDB(barcode)) {
             Count count = new Count(employee);
             Controller.empId = count.getCountDb(db, barcode);
             Controller.count = count.getCount();
@@ -493,7 +493,7 @@ public class Controller {
             }
             System.out.println(count.getCount());
         }
-        else if(!testBarcode(barcode))
+        else if(!checkIfBarcodeExistsInDB(barcode))
         {
             alertLabelPane.setText("Barcode: " + barcode + " not found.");
         }
@@ -506,7 +506,7 @@ public class Controller {
      @param barcode The barcode that is being checked
      @throws
      */
-    public boolean testBarcode(int barcode) throws SQLException, IOException, ClassNotFoundException {
+    public boolean checkIfBarcodeExistsInDB(int barcode) throws SQLException, IOException, ClassNotFoundException {
         checkLoggedIn();
         checkEmpLoggedIn();
         int zeroOrOne = -1;
@@ -538,7 +538,7 @@ public class Controller {
         checkLoggedIn();
         checkEmpLoggedIn();
         int barcode = returnBarcode();
-        if(testBarcode(barcode))
+        if(checkIfBarcodeExistsInDB(barcode))
         {
             setDisplay();
             int count = setCount;
@@ -554,7 +554,7 @@ public class Controller {
             }
             System.out.println(count);
         }
-        else if(!testBarcode(barcode)) {
+        else if(!checkIfBarcodeExistsInDB(barcode)) {
             alertLabelPane.setText("Barcode: " + barcode + " not found.");
         }
         populateTable(barcode);
@@ -663,12 +663,12 @@ public class Controller {
             if (employee.getEmpID() == -1|| employee.getEmpID() == 0 ) {
                 loginDisplay();
             }
-            add1();
+            incrementStock();
         } else if (state == 2) {
             if (employee.getEmpID() == -1 || employee.getEmpID() == 0 ) {
                 loginDisplay();
             }
-            sub1();
+            decrementStock();
         } else if (state == 3) {
             if (employee.getEmpID() == -1 || employee.getEmpID() == 0 ) {
                 loginDisplay();
@@ -749,6 +749,7 @@ public class Controller {
             {
                 empName = set.getString(1);
             }
+            //TODO: Figure out application threading for alert
             sureMessage.setText("User: " + empName + " has already scanned this item with a count of " + count);
             StringProperty valueProperty = new SimpleStringProperty("User: " + empName + " has already scanned this item with a count of " + count);
             sure.textProperty().bind(valueProperty);
@@ -772,7 +773,6 @@ public class Controller {
 
     public void lastDitch(){
         sure.setText("User: " + empName + " has already scanned this item with a count of " + count);
-       
     }
 
     public void display() throws IOException, ClassNotFoundException {

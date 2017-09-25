@@ -105,8 +105,8 @@ j  org.apache.poi.POIXMLProperties.<init>(Lorg/apache/poi/openxml4j/opc/OPCPacka
 j  org.apache.poi.POIXMLDocument.getProperties()Lorg/apache/poi/POIXMLProperties;+16
 j  org.apache.poi.POIXMLDocument.write(Ljava/io/OutputStream;)V+20
 j  Controller.barcodeNotFound(J)V+86
-j  Controller.testBarcode(I)Z+86
-j  Controller.add1()V+15
+j  checkIfBarcodeExistsInDB(I)Z+86
+j  incrementStock()V+15
 j  Controller.addSubSet()V+34
 v  ~StubRoutines::call_stub
 V  [libjvm.dylib+0x2ecf06]
@@ -204,8 +204,8 @@ j  org.apache.poi.POIXMLProperties.<init>(Lorg/apache/poi/openxml4j/opc/OPCPacka
 j  org.apache.poi.POIXMLDocument.getProperties()Lorg/apache/poi/POIXMLProperties;+16
 j  org.apache.poi.POIXMLDocument.write(Ljava/io/OutputStream;)V+20
 j  Controller.barcodeNotFound(J)V+86
-j  Controller.testBarcode(I)Z+86
-j  Controller.add1()V+15
+j  checkIfBarcodeExistsInDB(I)Z+86
+j  incrementStock()V+15
 j  Controller.addSubSet()V+34
 v  ~StubRoutines::call_stub
 j  sun.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0
